@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoadFinished(Loader<List<Book>> loader, List<Book> books) {
         bookAdapter.clear();
 
-        if (!books.isEmpty()) {
+        if (books != null && !books.isEmpty()) {
             bookAdapter.addAll(books);
             bookNotFound.setVisibility(View.GONE);
 
