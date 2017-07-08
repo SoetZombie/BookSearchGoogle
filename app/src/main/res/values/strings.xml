@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">BookSearchGoogle</string>
+    <string name="not_existing_book">Sorry, book not found, try to search for other one, use search view at the top to search for books</string>
+    <string name="console">Console</string>
+    <string name="not_connected_to_internet">Sadly, you are not having internet.</string>
+</resources>
