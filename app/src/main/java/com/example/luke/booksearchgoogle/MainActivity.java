@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         bookAdapter = new BookAdapter(this, books);
         bookListView = (ListView) findViewById(R.id.list);
         bookListView.setAdapter(bookAdapter);
-         ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+         final ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
          NetworkInfo networkInfo = cm.getActiveNetworkInfo();
          final boolean isConnected = networkInfo != null && networkInfo.isConnectedOrConnecting();
 
@@ -58,8 +58,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
             @Override
             public boolean onQueryTextSubmit(String query) {
+
+                NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+                boolean checkInternet = networkInfo != null && networkInfo.isConnectedOrConnecting();
                 bookListView.setVisibility(View.VISIBLE);
-                if (isConnected) {
+                if (checkInternet) {
+
                     getLoaderManager().restartLoader(0, null, MainActivity.this);
                     bookNotFound.setVisibility(View.GONE);
                     return true;
