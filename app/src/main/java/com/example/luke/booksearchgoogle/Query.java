@@ -114,10 +114,10 @@ public class Query {
 
         try {
             JSONObject volumes = new JSONObject(responseJson);
-            JSONArray items = new JSONArray();
 
-            if(!items.isNull(0)) {
-                 items = volumes.getJSONArray("items");
+
+            if(volumes.has("items")) {
+                JSONArray items = volumes.getJSONArray("items");
                 for (int i = 0; i < items.length(); i++) {
                     JSONObject item = items.getJSONObject(i);
                     JSONObject volume = item.getJSONObject("volumeInfo");
